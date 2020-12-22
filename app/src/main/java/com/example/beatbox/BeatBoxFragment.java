@@ -9,7 +9,9 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import com.example.beatbox.databinding.FragmentBeatBoxBinding;
+import com.example.beatbox.databinding.ListItemSoundBinding;
 
 public class BeatBoxFragment extends Fragment {
 
@@ -28,4 +30,36 @@ public class BeatBoxFragment extends Fragment {
 
                 return binding.getRoot();
     }
+
+    private class SoundHolder extends RecyclerView.ViewHolder{
+
+        private ListItemSoundBinding mBinding;
+
+        public SoundHolder(ListItemSoundBinding binding) {
+            super(binding.getRoot());
+            mBinding=binding;
+        }
+    }
+
+    private class SoundAdapter extends RecyclerView.Adapter<SoundHolder>{
+        public SoundAdapter() {
+        }
+
+        @NonNull
+        @Override
+        public SoundHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            return null;
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull SoundHolder holder, int position) {
+
+        }
+
+        @Override
+        public int getItemCount() {
+            return 0;
+        }
+    }
+
 }
