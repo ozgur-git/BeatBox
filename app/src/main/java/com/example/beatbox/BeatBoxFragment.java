@@ -33,6 +33,12 @@ public class BeatBoxFragment extends Fragment {
                 return binding.getRoot();
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        new BeatBox(getActivity());
+    }
+
     private class SoundHolder extends RecyclerView.ViewHolder{
 
         private ListItemSoundBinding mBinding;
