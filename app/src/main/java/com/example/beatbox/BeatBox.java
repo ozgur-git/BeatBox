@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.res.AssetManager;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.logging.Logger;
 
 public class BeatBox {
@@ -17,6 +19,7 @@ public class BeatBox {
     private static final String SOUNDS_FOLDER="sample_sounds";
 
     private AssetManager mAssets;
+    private List<Sound> mSounds=new ArrayList<>();
 
     public BeatBox(Context context) {
 
@@ -33,9 +36,13 @@ public class BeatBox {
             e.printStackTrace();
         }
 
-        Arrays.asList(listAssets).forEach((item)->mLogger.info("filename is "+item));
+        Arrays.asList(listAssets).forEach((item)->{
+            mLogger.info("filename is "+item);
+            mSounds.add(new Sound(SOUNDS_FOLDER+"/"+item));
+        });
+    }
 
-
-
+    public List<Sound> getSounds() {
+        return mSounds;
     }
 }
