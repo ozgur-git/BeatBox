@@ -9,6 +9,9 @@ public class Sound {
         mAssetPath = assetPath;
     }
 
+    public Sound() {
+    }
+
     public String getAssetPath() {
         return mAssetPath;
     }
