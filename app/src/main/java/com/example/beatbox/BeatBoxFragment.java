@@ -13,11 +13,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.beatbox.databinding.FragmentBeatBoxBinding;
 import com.example.beatbox.databinding.ListItemSoundBinding;
 
+import javax.inject.Inject;
 import java.util.List;
 
 public class BeatBoxFragment extends Fragment {
 
-    private BeatBox mBeatBox;
+    private ApplicationComponent mApplicationComponent;
+
+    @Inject
+    BeatBox mBeatBox;
 
     public static BeatBoxFragment newInstance(){
         return new BeatBoxFragment();
@@ -36,7 +40,9 @@ public class BeatBoxFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mBeatBox=new BeatBox();//todo DI
+        mApplicationComponent=DaggerApplicationComponent.builder().applicationModule(new ApplicationModule()).build();
+        mApplicationComponent.inject(this);
+//        mBeatBox=new BeatBox();//todo DI
         mBeatBox.setContext(getActivity());
     }
 

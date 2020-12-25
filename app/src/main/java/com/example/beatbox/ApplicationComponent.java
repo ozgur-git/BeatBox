@@ -2,7 +2,7 @@ package com.example.beatbox;
 
 import dagger.Component;
 
-@Component(modules = ApplicationComponent.class)
+@Component(modules = ApplicationModule.class)
 public interface ApplicationComponent {
 
    void inject(BeatBoxFragment beatBoxFragment);
