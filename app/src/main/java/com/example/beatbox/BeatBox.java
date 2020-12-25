@@ -20,15 +20,19 @@ public class BeatBox {
 
     private AssetManager mAssets;
     private List<Sound> mSounds=new ArrayList<>();
+    private Context mContext;
 
-    public BeatBox(Context context) {
-
-        mAssets=context.getAssets();
+    public BeatBox() {
         loadSounds();
+    }
+
+    public void setContext(Context context) {
+        mContext = context;
     }
 
     private void loadSounds(){
 
+        mAssets=mContext.getAssets();
         String[] listAssets=null;
         try {
             listAssets=mAssets.list(SOUNDS_FOLDER);
@@ -38,7 +42,11 @@ public class BeatBox {
 
         Arrays.asList(listAssets).forEach((item)->{
             mLogger.info("filename is "+item);
-            mSounds.add(new Sound(SOUNDS_FOLDER+"/"+item));
+            Sound sound=new Sound();
+            sound.setAssetPath(SOUNDS_FOLDER+"/"+item);
+            sound.setName();
+            mSounds.add(sound);
+//            mSounds.add(new Sound(SOUNDS_FOLDER+"/"+item));//todo DI
         });
     }
 

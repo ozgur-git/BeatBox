@@ -5,17 +5,20 @@ public class Sound {
     private String mAssetPath;
     private String mName;
 
-    public Sound(String assetPath) {
+    public void setAssetPath(String assetPath) {
         mAssetPath = assetPath;
-        String[] components=assetPath.split("/");
-        mName=components[1].replace(".wav","");
     }
 
     public String getAssetPath() {
         return mAssetPath;
     }
 
+    public void setName() {
+        String[] components=mAssetPath.split("/");
+        mName=components[1].replace(".wav","");
+    }
+
     public String getName() {
-        return mName;
+       return mName;
     }
 }
