@@ -1,19 +1,26 @@
 package com.example.beatbox;
 
+import android.content.Context;
 import dagger.Module;
 import dagger.Provides;
 
 @Module
 public class ApplicationModule {
 
-   @Provides
+    Context mContext;
+
+    public ApplicationModule(Context context) {
+        mContext = context;
+    }
+
+    @Provides
    Sound provideSounds(){
        return new Sound();
    }
 
    @Provides
     BeatBox provideBeatBox() {
-       return new BeatBox();
+       return new BeatBox(mContext);
    }
 }
 

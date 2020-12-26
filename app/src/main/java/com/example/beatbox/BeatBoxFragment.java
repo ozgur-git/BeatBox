@@ -18,8 +18,6 @@ import java.util.List;
 
 public class BeatBoxFragment extends Fragment {
 
-    private ApplicationComponent mApplicationComponent;
-
     @Inject
     BeatBox mBeatBox;
 
@@ -31,7 +29,7 @@ public class BeatBoxFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        FragmentBeatBoxBinding binding= DataBindingUtil.inflate(inflater,R.layout.fragment_beat_box,container,false);
+       FragmentBeatBoxBinding binding= DataBindingUtil.inflate(inflater,R.layout.fragment_beat_box,container,false);
         binding.recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),3));
         binding.recyclerView.setAdapter(new SoundAdapter(mBeatBox.getSounds()));
                 return binding.getRoot();
@@ -40,11 +38,9 @@ public class BeatBoxFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mApplicationComponent=DaggerApplicationComponent.builder().applicationModule(new ApplicationModule()).build();
-        mApplicationComponent.inject(this);
-        ((GlobalVariables)getActivity().getApplication()).getApplicationComponent().inject(this);
-//        mBeatBox=new BeatBox();//todo DI
+        ((GlobalVariables)getActivity().getApplicationContext()).getApplicationComponent().inject(this);
         mBeatBox.setContext(getActivity());
+//        mBeatBox=new BeatBox();//todo DI
     }
 
     private class SoundHolder extends RecyclerView.ViewHolder{

@@ -4,12 +4,15 @@ import android.app.Application;
 
 public class GlobalVariables extends Application {
 
-    private ApplicationComponent mApplicationComponent;
+    ApplicationComponent mApplicationComponent;
+
+    public GlobalVariables() {
+    }
 
     @Override
     public void onCreate() {
         super.onCreate();
-        mApplicationComponent=DaggerApplicationComponent.builder().applicationModule(new ApplicationModule()).build();
+        mApplicationComponent=DaggerApplicationComponent.builder().applicationModule(new ApplicationModule(getApplicationContext())).build();
     }
 
     public ApplicationComponent getApplicationComponent() {

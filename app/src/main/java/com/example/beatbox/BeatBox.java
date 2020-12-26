@@ -14,7 +14,6 @@ public class BeatBox {
 
     Logger mLogger=Logger.getLogger(getClass().getName());
 //    Logger mLogger=Logger.getLogger("abc");
-    private ApplicationComponent mApplicationComponent;
 
     private static final String TAG="BeatBox";
 
@@ -25,9 +24,9 @@ public class BeatBox {
     private Context mContext;
     @Inject
     Sound sound;
-    public BeatBox() {
-        mApplicationComponent=DaggerApplicationComponent.builder().applicationModule(new ApplicationModule()).build();
-        mApplicationComponent.inject(this);
+
+    public BeatBox(Context context) {
+        mContext=context;
         loadSounds();
     }
 
@@ -47,6 +46,7 @@ public class BeatBox {
 
         Arrays.asList(listAssets).forEach((item)->{
             mLogger.info("filename is "+item);
+            ((GlobalVariables)mContext.getApplicationContext()).getApplicationComponent().inject(this);
             sound.setAssetPath(SOUNDS_FOLDER+"/"+item);
             sound.setName();
             mSounds.add(sound);
