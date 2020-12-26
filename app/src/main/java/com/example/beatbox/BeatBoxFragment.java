@@ -42,6 +42,7 @@ public class BeatBoxFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mApplicationComponent=DaggerApplicationComponent.builder().applicationModule(new ApplicationModule()).build();
         mApplicationComponent.inject(this);
+        ((GlobalVariables)getActivity().getApplication()).getApplicationComponent().inject(this);
 //        mBeatBox=new BeatBox();//todo DI
         mBeatBox.setContext(getActivity());
     }

@@ -2,7 +2,7 @@ package com.example.beatbox;
 
 import android.app.Application;
 
-public class GlobalVariable extends Application {
+public class GlobalVariables extends Application {
 
     private ApplicationComponent mApplicationComponent;
 
