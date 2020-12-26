@@ -12,6 +12,13 @@ public class Sound {
     public Sound() {
     }
 
+    public Sound(String assetPath) {
+        mAssetPath = assetPath;
+        String[] components=mAssetPath.split("/");
+        mName=components[1].replace(".wav","");
+
+    }
+
     public String getAssetPath() {
         return mAssetPath;
     }

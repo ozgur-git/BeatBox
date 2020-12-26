@@ -13,8 +13,10 @@ public class ApplicationModule {
         mContext = context;
     }
 
+
     @Provides
-   Sound provideSounds(){
+   Sound provideSounds()
+    {
        return new Sound();
    }
 

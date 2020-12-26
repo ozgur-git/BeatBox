@@ -6,9 +6,6 @@ public class GlobalVariables extends Application {
 
     ApplicationComponent mApplicationComponent;
 
-    public GlobalVariables() {
-    }
-
     @Override
     public void onCreate() {
         super.onCreate();

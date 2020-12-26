@@ -39,7 +39,7 @@ public class BeatBoxFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ((GlobalVariables)getActivity().getApplicationContext()).getApplicationComponent().inject(this);
-        mBeatBox.setContext(getActivity());
+//        mBeatBox.setContext(getActivity());
 //        mBeatBox=new BeatBox();//todo DI
     }
 
