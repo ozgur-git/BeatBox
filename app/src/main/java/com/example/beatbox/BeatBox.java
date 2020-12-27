@@ -22,16 +22,13 @@ public class BeatBox {
     private AssetManager mAssets;
     private List<Sound> mSounds=new ArrayList<>();
     private Context mContext;
+
     @Inject
     Sound sound;
 
     public BeatBox(Context context) {
         mContext=context;
         loadSounds();
-    }
-
-    public void setContext(Context context) {
-        mContext = context;
     }
 
     private void loadSounds(){

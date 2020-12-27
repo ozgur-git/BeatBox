@@ -24,5 +24,10 @@ public class ApplicationModule {
     BeatBox provideBeatBox() {
        return new BeatBox(mContext);
    }
+
+   @Provides
+    SoundViewModel provideSoundViewModel(){
+        return new SoundViewModel(new BeatBox(mContext));
+   }
 }
 

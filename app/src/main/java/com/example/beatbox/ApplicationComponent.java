@@ -7,4 +7,5 @@ public interface ApplicationComponent {
 
    void inject(BeatBoxFragment beatBoxFragment);
    void inject(BeatBox beatBox);
+   void inject(BeatBoxFragment.SoundHolder soundHolder);
 }

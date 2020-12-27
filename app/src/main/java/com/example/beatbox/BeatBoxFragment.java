@@ -43,13 +43,17 @@ public class BeatBoxFragment extends Fragment {
 //        mBeatBox=new BeatBox();//todo DI
     }
 
-    private class SoundHolder extends RecyclerView.ViewHolder{
+    class SoundHolder extends RecyclerView.ViewHolder{
 
-        private ListItemSoundBinding mBinding;
+        @Inject
+        SoundViewModel mSoundViewModel;
+
+//        private ListItemSoundBinding mBinding;
 
         public SoundHolder(ListItemSoundBinding binding) {
             super(binding.getRoot());
-            mBinding=binding;
+            ((GlobalVariables)getActivity().getApplicationContext()).getApplicationComponent().inject(this);
+            binding.setViewModel(mSoundViewModel);
         }
     }
 
