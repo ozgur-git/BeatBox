@@ -1,8 +1,9 @@
 package com.example.beatbox;
 
-import javax.inject.Inject;
+import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
 
-public class SoundViewModel {
+public class SoundViewModel extends BaseObservable {
 
     private Sound mSound;
 
@@ -12,10 +13,16 @@ public class SoundViewModel {
         mBeatBox = beatBox;
     }
 
+    public void setSound(Sound sound) {
+        mSound = sound;
+        notifyPropertyChanged(BR.title);
+    }
+
     public Sound getSound() {
         return mSound;
     }
 
+    @Bindable
     public String getTitle(){
         return mSound.getName();
     }
