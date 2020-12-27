@@ -26,4 +26,8 @@ public class SoundViewModel extends BaseObservable {
     public String getTitle(){
         return mSound.getName();
     }
+
+    public BeatBox getBeatBox() {
+        return mBeatBox;
+    }
 }
