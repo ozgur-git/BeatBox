@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
 public class SoundViewModelTest {
 
@@ -24,8 +25,14 @@ public class SoundViewModelTest {
     }
 
     @Test
-    public void exposesSoundNameAsTitle(){
+    void exposesSoundNameAsTitle(){
             assertThat(mSubject.getTitle(),is(mSound.getName()));
+    }
+
+    @Test
+    public void callsBeatBoxPlayOnButtonClicked(){
+        mSubject.onButtonClicked();
+        verify(mBeatBox).play(mSound);
     }
 
 

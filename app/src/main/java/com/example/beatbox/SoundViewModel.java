@@ -30,4 +30,8 @@ public class SoundViewModel extends BaseObservable {
     public BeatBox getBeatBox() {
         return mBeatBox;
     }
+
+    public void onButtonClicked() {
+        mBeatBox.play(mSound);
+    }
 }
