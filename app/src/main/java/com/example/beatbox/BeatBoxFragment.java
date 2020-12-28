@@ -15,8 +15,11 @@ import com.example.beatbox.databinding.ListItemSoundBinding;
 
 import javax.inject.Inject;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class BeatBoxFragment extends Fragment {
+
+    Logger mLogger=Logger.getLogger(getClass().getName());
 
     @Inject
     BeatBox mBeatBox;
@@ -38,6 +41,7 @@ public class BeatBoxFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRetainInstance(true);//onDestroy is not called
         ((GlobalVariables)getActivity().getApplicationContext()).getApplicationComponent().inject(this);
 //        mBeatBox.setContext(getActivity());
 //        mBeatBox=new BeatBox();//todo DI
@@ -102,6 +106,7 @@ public class BeatBoxFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
+       mLogger.info("onDestroy is called!!");
         mBeatBox.release();
     }
 }
