@@ -3,8 +3,6 @@ package com.example.beatbox;
 import org.junit.Before;
 import org.junit.Test;
 
-import javax.inject.Inject;
-
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Mockito.mock;
@@ -25,7 +23,7 @@ public class SoundViewModelTest {
     }
 
     @Test
-    void exposesSoundNameAsTitle(){
+    public void exposesSoundNameAsTitle(){
             assertThat(mSubject.getTitle(),is(mSound.getName()));
     }
 

@@ -5,6 +5,7 @@ import androidx.databinding.Bindable;
 
 public class SoundViewModel extends BaseObservable {
 
+
     private Sound mSound;
 
     private BeatBox mBeatBox;
@@ -32,6 +33,7 @@ public class SoundViewModel extends BaseObservable {
     }
 
     public void onButtonClicked() {
+
         mBeatBox.play(mSound);
     }
 }

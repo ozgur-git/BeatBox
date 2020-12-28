@@ -78,7 +78,10 @@ public class BeatBox {
 
     public void play(Sound sound){
 
+
         Integer soundID=sound.getSoundId();
+
+        mLogger.info("sound id is "+soundID);
 
 
         if (soundID==null) return;
@@ -86,5 +89,9 @@ public class BeatBox {
         else {
             mSoundPool.play(soundID,1.0f,1.0f,1,0,1.0f);
         }
+    }
+
+    public void release(){
+        mSoundPool.release();
     }
 }
