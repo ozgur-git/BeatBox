@@ -1,10 +1,10 @@
 package com.example.beatbox;
 
+import android.widget.SeekBar;
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 
 public class SoundViewModel extends BaseObservable {
-
 
     private Sound mSound;
 
@@ -33,7 +33,13 @@ public class SoundViewModel extends BaseObservable {
     }
 
     public void onButtonClicked() {
-
         mBeatBox.play(mSound);
     }
+
+    public void getSeekBarProgress(){
+        mBeatBox.setPlayBackSpeed();
+
+    }
+
+
 }

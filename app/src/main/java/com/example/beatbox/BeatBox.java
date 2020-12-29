@@ -5,6 +5,7 @@ import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
 import android.media.AudioManager;
 import android.media.SoundPool;
+import android.widget.SeekBar;
 
 import javax.inject.Inject;
 import java.io.IOException;
@@ -29,6 +30,8 @@ public class BeatBox {
     private Context mContext;
     private SoundPool mSoundPool;
 
+    private int mPlayBackSpeed;
+
     @Inject
     Sound sound;
 
@@ -39,7 +42,6 @@ public class BeatBox {
     }
 
     private void load(Sound sound){
-
         AssetFileDescriptor assetFileDescriptor=null;
         try {
             assetFileDescriptor=mAssets.openFd(sound.getAssetPath());
@@ -50,9 +52,7 @@ public class BeatBox {
         sound.setSoundId(mSoundPool.load(assetFileDescriptor,1));
     }
 
-
     private void loadSounds(){
-
         mAssets=mContext.getAssets();
         String[] listAssets=null;
         try {
@@ -77,15 +77,9 @@ public class BeatBox {
     }
 
     public void play(Sound sound){
-
-
         Integer soundID=sound.getSoundId();
-
         mLogger.info("sound id is "+soundID);
-
-
         if (soundID==null) return;
-
         else {
             mSoundPool.play(soundID,1.0f,1.0f,1,0,1.0f);
         }
@@ -93,5 +87,9 @@ public class BeatBox {
 
     public void release(){
         mSoundPool.release();
+    }
+
+    public void setPlayBackSpeed(int playBackSpeed) {
+        mPlayBackSpeed = playBackSpeed;
     }
 }
