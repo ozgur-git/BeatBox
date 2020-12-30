@@ -89,7 +89,4 @@ public class BeatBox {
         mSoundPool.release();
     }
 
-    public void setPlayBackSpeed(int playBackSpeed) {
-        mPlayBackSpeed = playBackSpeed;
-    }
 }
