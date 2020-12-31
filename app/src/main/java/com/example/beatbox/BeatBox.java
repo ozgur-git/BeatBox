@@ -76,6 +76,10 @@ public class BeatBox {
         return mSounds;
     }
 
+    public void setPlayBackSpeed(float playBackSpeed) {
+        mPlayBackSpeed = playBackSpeed;
+    }
+
     public void play(Sound sound){
         Integer soundID=sound.getSoundId();
         mLogger.info("playback speed is "+mPlayBackSpeed);
@@ -89,8 +93,8 @@ public class BeatBox {
         mSoundPool.release();
     }
 
-    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-
-        mPlayBackSpeed=(float) progress/100;
-    }
+//    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+//
+//        mPlayBackSpeed=(float) progress/100;
+//    }
 }

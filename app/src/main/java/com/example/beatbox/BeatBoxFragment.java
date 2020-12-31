@@ -25,6 +25,9 @@ public class BeatBoxFragment extends Fragment {
     @Inject
     BeatBox mBeatBox;
 
+    @Inject
+    SoundViewModel soundViewModel;
+
     SeekBar mSeekBar;
 
     public static BeatBoxFragment newInstance(){
@@ -39,7 +42,7 @@ public class BeatBoxFragment extends Fragment {
        binding.recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),3));
        binding.recyclerView.setAdapter(new SoundAdapter(mBeatBox.getSounds()));
 //       binding.setViewModel(new BeatBox(getActivity()));
-        binding.setViewModel(mBeatBox);
+        binding.setViewModel(soundViewModel);
        binding.executePendingBindings();
        return binding.getRoot();
     }
