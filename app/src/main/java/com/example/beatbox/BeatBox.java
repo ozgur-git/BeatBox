@@ -30,7 +30,7 @@ public class BeatBox {
     private Context mContext;
     private SoundPool mSoundPool;
 
-    private int mPlayBackSpeed;
+    private float mPlayBackSpeed;
 
     @Inject
     Sound sound;
@@ -78,10 +78,10 @@ public class BeatBox {
 
     public void play(Sound sound){
         Integer soundID=sound.getSoundId();
-        mLogger.info("sound id is "+soundID);
+        mLogger.info("playback speed is "+mPlayBackSpeed);
         if (soundID==null) return;
         else {
-            mSoundPool.play(soundID,1.0f,1.0f,1,0,1.0f);
+            mSoundPool.play(soundID,1.0f,1.0f,1,0,mPlayBackSpeed);
         }
     }
 
@@ -89,4 +89,8 @@ public class BeatBox {
         mSoundPool.release();
     }
 
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+
+        mPlayBackSpeed=(float) progress/100;
+    }
 }

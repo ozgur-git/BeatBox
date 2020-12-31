@@ -1,17 +1,13 @@
 package com.example.beatbox;
 
-import android.widget.SeekBar;
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
-import androidx.databinding.ObservableField;
 
 import java.util.logging.Logger;
 
 public class SoundViewModel extends BaseObservable {
 
     Logger mLogger=Logger.getLogger(getClass().getName());
-
-    private int changeValue;
 
     private Sound mSound;
     private BeatBox mBeatBox;
@@ -29,15 +25,6 @@ public class SoundViewModel extends BaseObservable {
         return mSound;
     }
 
-    public int getChangeValue() {
-        return changeValue;
-    }
-
-    public void setChangeValue(int changeValue) {
-        this.changeValue = changeValue;
-        mLogger.info("progress is "+changeValue);
-    }
-
     @Bindable
     public String getTitle(){
         return mSound.getName();
@@ -49,14 +36,6 @@ public class SoundViewModel extends BaseObservable {
 
     public void onButtonClicked() {
         mBeatBox.play(mSound);
-        mLogger.info("change value is "+changeValue);
    }
-
-    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-
-        changeValue=progress;
-
-
-    }
 
 }

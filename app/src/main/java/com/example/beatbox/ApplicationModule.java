@@ -8,6 +8,7 @@ import dagger.Provides;
 public class ApplicationModule {
 
     Context mContext;
+    BeatBox mBeatBox;
 
     public ApplicationModule(Context context) {
         mContext = context;
@@ -22,12 +23,13 @@ public class ApplicationModule {
 
    @Provides
     BeatBox provideBeatBox() {
-       return new BeatBox(mContext);
+        mBeatBox=new BeatBox(mContext);
+       return mBeatBox;
    }
 
    @Provides
     SoundViewModel provideSoundViewModel(){
-        return new SoundViewModel(new BeatBox(mContext));
+        return new SoundViewModel(mBeatBox);
    }
 }
 

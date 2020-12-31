@@ -38,7 +38,8 @@ public class BeatBoxFragment extends Fragment {
        FragmentBeatBoxBinding binding= DataBindingUtil.inflate(inflater,R.layout.fragment_beat_box,container,false);
        binding.recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),3));
        binding.recyclerView.setAdapter(new SoundAdapter(mBeatBox.getSounds()));
-       binding.setViewModel(new SoundViewModel(mBeatBox));
+//       binding.setViewModel(new BeatBox(getActivity()));
+        binding.setViewModel(mBeatBox);
        binding.executePendingBindings();
        return binding.getRoot();
     }
