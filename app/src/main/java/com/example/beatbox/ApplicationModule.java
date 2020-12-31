@@ -4,6 +4,8 @@ import android.content.Context;
 import dagger.Module;
 import dagger.Provides;
 
+import javax.inject.Singleton;
+
 @Module
 public class ApplicationModule {
 
@@ -22,6 +24,7 @@ public class ApplicationModule {
    }
 
    @Provides
+   @Singleton
     BeatBox provideBeatBox() {
         mBeatBox=new BeatBox(mContext);
        return mBeatBox;
