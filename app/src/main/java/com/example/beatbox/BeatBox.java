@@ -8,9 +8,13 @@ import android.media.SoundPool;
 import android.widget.SeekBar;
 
 import javax.inject.Inject;
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -54,13 +58,25 @@ public class BeatBox {
 
     private void loadSounds(){
         mAssets=mContext.getAssets();
+        InputStreamReader inputStreamReader=null;
+        LinkedList<Character> mCharList=new LinkedList<>();
+        try {
+            inputStreamReader=new InputStreamReader(mAssets.open("sample_text"+ File.separator+"input.txt"));
+           int data=inputStreamReader.read();
+            while (data!=-1){
+                mCharList.add((char)data);
+                data=inputStreamReader.read();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        mLogger.info("Char array is "+mCharList);
         String[] listAssets=null;
         try {
             listAssets=mAssets.list(SOUNDS_FOLDER);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         Arrays.asList(listAssets).forEach((item)->{
             mLogger.info("filename is "+item);
             ((GlobalVariables)mContext.getApplicationContext()).getApplicationComponent().inject(this);
